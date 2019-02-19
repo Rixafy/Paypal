@@ -1,0 +1,19 @@
+{
+    "name": "rixafy/paypal",
+    "description": "Lightweight paypal API for creating and receiving paypal payments",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rick Strafy",
+            "email": "rixafy@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "config": {
+        "platform": {
+            "php": "7.1"
+        }
+    }
+}
