@@ -15,6 +15,7 @@ class Paypal
     const RESPONSE_VERIFIED = 'VERIFIED';
     const RESPONSE_INVALID = 'INVALID';
 
+    /** @var bool */
     private $sandboxMode;
 
     /**
