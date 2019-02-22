@@ -10,7 +10,9 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "ext-curl": "*"
+    },
     "config": {
         "platform": {
             "php": "7.1"
