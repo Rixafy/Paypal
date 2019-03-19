@@ -13,6 +13,11 @@
     "require": {
         "ext-curl": "*"
     },
+    "autoload": {
+        "psr-4": {
+            "Rixafy\\Paypal\\": "src"
+        }
+    },
     "config": {
         "platform": {
             "php": "7.1"
