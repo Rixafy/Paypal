@@ -28,6 +28,7 @@ class PaypalLinkBuilder
 
         if ($isShoppingCart) {
             $this->parameters['cmd'] = '_cart';
+
         } else {
             $this->parameters['cmd'] = '_xclick';
         }
