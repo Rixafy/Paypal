@@ -42,50 +42,31 @@ class PaypalData
         }
     }
 
-    /**
-     * @param string $key
-     * @return string|null
-     */
     public function getCustomParameter(string $key): ?string
     {
         return isset($this->customParameters[$key]) ? $this->customParameters[$key] : null;
     }
 
-    /**
-     * @return float
-     */
     public function getPrice(): float
     {
         return $this->price;
     }
 
-    /**
-     * @return string
-     */
     public function getCurrency(): string
     {
         return $this->currency;
     }
 
-    /**
-     * @return string
-     */
     public function getCustom(): string
     {
         return $this->custom;
     }
 
-    /**
-     * @return string
-     */
     public function getPayerEmail(): string
     {
         return $this->payerEmail;
     }
 
-    /**
-     * @return array
-     */
     public function getRawData(): array
     {
         return $this->rawData;
