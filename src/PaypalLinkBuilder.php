@@ -28,6 +28,7 @@ class PaypalLinkBuilder
 
         if ($isShoppingCart) {
             $this->parameters['cmd'] = '_cart';
+
         } else {
             $this->parameters['cmd'] = '_xclick';
         }
@@ -43,7 +44,7 @@ class PaypalLinkBuilder
      * @param bool $instantCallback Url will be requested by paypal immediately after payment with POST data (even if you webserver is offline), IPN callback will be executed too, so you must count with that
      * @param int $callBackTimeOut Valid value is 1-6 (seconds), default 3
      */
-    public function setCallBack(string $url, bool $instantCallback = false, int $callBackTimeOut = 3)
+    public function setCallBack(string $url, bool $instantCallback = false, int $callBackTimeOut = 3): void
     {
         $this->parameters['notify_url'] = $url;
 
@@ -56,7 +57,7 @@ class PaypalLinkBuilder
     /**
      * @param string $url Url where paypal sends user after successful payment
      */
-    public function setSuccessUrl(string $url)
+    public function setSuccessUrl(string $url): void
     {
         $this->parameters['return'] = $url;
     }
@@ -64,7 +65,7 @@ class PaypalLinkBuilder
     /**
      * @param string $url Url where paypal sends user after cancelling the payment
      */
-    public function setFailUrl(string $url)
+    public function setFailUrl(string $url): void
     {
         $this->parameters['cancel_return'] = $url;
     }
@@ -72,7 +73,7 @@ class PaypalLinkBuilder
     /**
      * @param string $currencyCode Currency code, max length is 3 characters
      */
-    public function setCurrencyCode(string $currencyCode)
+    public function setCurrencyCode(string $currencyCode): void
     {
         $this->parameters['currency_code'] = $currencyCode;
     }
@@ -80,7 +81,7 @@ class PaypalLinkBuilder
     /**
      * @param $custom string Custom parameter such as user identifier
      */
-    public function setCustom(string $custom)
+    public function setCustom(string $custom): void
     {
         $this->parameters['custom'] = $custom;
     }
@@ -91,7 +92,7 @@ class PaypalLinkBuilder
      * @param null|string $product
      * @param null|string $country
      */
-    public function setStoreInfo(string $company, ?string $service = null, ?string $product = null, ?string $country = null)
+    public function setStoreInfo(string $company, ?string $service = null, ?string $product = null, ?string $country = null): void
     {
         $info = $company;
 
@@ -113,7 +114,7 @@ class PaypalLinkBuilder
     /**
      * @param string $language Default language is not set, use format en_GB
      */
-    public function setLanguage(string $language)
+    public function setLanguage(string $language): void
     {
         $this->parameters['lc'] = $language;
     }
@@ -121,7 +122,7 @@ class PaypalLinkBuilder
     /**
      * @param string $charset Default charset is utf-8
      */
-    public function setCharset(string $charset)
+    public function setCharset(string $charset): void
     {
         $this->parameters['charset'] = $charset;
     }
@@ -129,7 +130,7 @@ class PaypalLinkBuilder
     /**
      * @param bool $enableNote
      */
-    public function setNote(bool $enableNote)
+    public function setNote(bool $enableNote): void
     {
         $this->parameters['no_note'] = $enableNote;
     }
@@ -137,7 +138,7 @@ class PaypalLinkBuilder
     /**
      * @param bool $enableShipping
      */
-    public function setShipping(bool $enableShipping)
+    public function setShipping(bool $enableShipping): void
     {
         $this->parameters['no_shipping'] = $enableShipping;
     }
@@ -145,7 +146,7 @@ class PaypalLinkBuilder
     /**
      * @param string $account Receiver email or ID
      */
-    public function setAccount(string $account)
+    public function setAccount(string $account): void
     {
         $this->parameters['business'] = $account;
         $this->parameters['receiver_email'] = $account;
@@ -154,7 +155,7 @@ class PaypalLinkBuilder
     /**
      * @param string $cartName Name for whole cart
      */
-    public function setCartName(string $cartName)
+    public function setCartName(string $cartName): void
     {
         $this->parameters['item_name'] = $cartName;
         $this->parameters['item_name_1'] = $cartName . 'ss';
@@ -163,7 +164,7 @@ class PaypalLinkBuilder
     /**
      * @param int $quantity
      */
-    public function setQuantity(int $quantity)
+    public function setQuantity(int $quantity): void
     {
         $this->parameters['quantity'] = $quantity;
         $this->parameters['quantity_1'] = $quantity;
@@ -172,7 +173,7 @@ class PaypalLinkBuilder
     /**
      * @param float $amount
      */
-    public function setCartAmount(float $amount)
+    public function setCartAmount(float $amount): void
     {
         $this->parameters['amount'] = $amount;
         $this->parameters['amount_1'] = $amount;
@@ -199,7 +200,7 @@ class PaypalLinkBuilder
      * @param string $parameterName Name of the parameter, max length is 64 characters
      * @param int|string|bool $value Boolean value will be converted to int 0/1, max length is 64 characters
      */
-    public function setCustomParameter(int $index, string $parameterName, $value)
+    public function setCustomParameter(int $index, string $parameterName, $value): void
     {
         $this->customOptions += 1;
         $this->parameters['on' . $index] = $parameterName;
@@ -211,7 +212,7 @@ class PaypalLinkBuilder
      * PayPal image in the top left corner
      * @param string $url Image dimensions: 150x50px
      */
-    public function setImage(string $url)
+    public function setImage(string $url): void
     {
         $this->parameters['image_url'] = $url;
     }
@@ -219,7 +220,7 @@ class PaypalLinkBuilder
     /**
      * @param bool $isShoppingCart
      */
-    public function setIsShoppingCart(bool $isShoppingCart)
+    public function setIsShoppingCart(bool $isShoppingCart): void
     {
         $this->isShoppingCart = $isShoppingCart;
 
@@ -237,7 +238,7 @@ class PaypalLinkBuilder
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->baseUrl . http_build_query($this->parameters);
     }
