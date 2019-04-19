@@ -18,18 +18,12 @@ class Paypal
     /** @var bool */
     private $sandboxMode;
 
-    /**
-     * Paypal constructor.
-     * @param bool $sandboxMode
-     */
     public function __construct(bool $sandboxMode)
     {
         $this->sandboxMode = $sandboxMode;
     }
 
     /**
-     * @param array $rawPostData
-     * @return PaypalData
      * @throws PaypalValidationException
      * @throws PaypalRequestException
      */
