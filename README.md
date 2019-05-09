@@ -31,7 +31,7 @@ echo 'Paypal URL is ' . $paypalBuilder; // redirect user to this URL
 ## Accept IPN request from paypal
 
 ```php
-$paypal = new Paypal(false); // debug mode = false
+$paypal = new Paypal($debug = false);
 
 try {
   $paypalData = $paypal->verifyRequest($postData);
