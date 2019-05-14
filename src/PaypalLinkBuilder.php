@@ -86,12 +86,6 @@ class PaypalLinkBuilder
         $this->parameters['custom'] = $custom;
     }
 
-    /**
-     * @param string $company
-     * @param null|string $service
-     * @param null|string $product
-     * @param null|string $country
-     */
     public function setStoreInfo(string $company, ?string $service = null, ?string $product = null, ?string $country = null): void
     {
         $info = $company;
@@ -127,17 +121,11 @@ class PaypalLinkBuilder
         $this->parameters['charset'] = $charset;
     }
 
-    /**
-     * @param bool $enableNote
-     */
     public function setNote(bool $enableNote): void
     {
         $this->parameters['no_note'] = $enableNote;
     }
 
-    /**
-     * @param bool $enableShipping
-     */
     public function setShipping(bool $enableShipping): void
     {
         $this->parameters['no_shipping'] = $enableShipping;
@@ -161,30 +149,18 @@ class PaypalLinkBuilder
         $this->parameters['item_name_1'] = $cartName . 'ss';
     }
 
-    /**
-     * @param int $quantity
-     */
     public function setQuantity(int $quantity): void
     {
         $this->parameters['quantity'] = $quantity;
         $this->parameters['quantity_1'] = $quantity;
     }
 
-    /**
-     * @param float $amount
-     */
     public function setCartAmount(float $amount): void
     {
         $this->parameters['amount'] = $amount;
         $this->parameters['amount_1'] = $amount;
     }
 
-    /**
-     * @param string $itemName
-     * @param int $quantity
-     * @param float $price
-     * @return string
-     */
     public function addItem(string $itemName, int $quantity, float $price): string
     {
         $this->parameters['upload'] = 1;
@@ -217,9 +193,6 @@ class PaypalLinkBuilder
         $this->parameters['image_url'] = $url;
     }
 
-    /**
-     * @param bool $isShoppingCart
-     */
     public function setIsShoppingCart(bool $isShoppingCart): void
     {
         $this->isShoppingCart = $isShoppingCart;
@@ -227,17 +200,11 @@ class PaypalLinkBuilder
         $this->parameters['cmd'] = '_cart';
     }
 
-    /**
-     * @return bool
-     */
     public function isShoppingCart(): bool
     {
         return $this->isShoppingCart;
     }
 
-    /**
-     * @return string
-     */
     public function __toString(): string
     {
         return $this->baseUrl . http_build_query($this->parameters);
