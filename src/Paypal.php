@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Rixafy\Paypal;
 
 use Rixafy\Paypal\Exception\PaypalRequestException;
-use Rixafy\Paypal\Exception\PaypalValidationException;
+use Rixafy\Paypal\Exception\PaypalVerificationException;
 
 class Paypal
 {
@@ -24,7 +24,7 @@ class Paypal
     }
 
     /**
-     * @throws PaypalValidationException
+     * @throws PaypalVerificationException
      * @throws PaypalRequestException
      */
     public function verifyRequest(array $rawPostData): PaypalData
@@ -58,13 +58,13 @@ class Paypal
                     return new PaypalData($rawPostData);
 
                 case Paypal::RESPONSE_INVALID:
-                    throw new PaypalValidationException('Paypal request is invalid');
+                    throw new PaypalVerificationException('Paypal request is invalid');
 
                 default:
-                    throw new PaypalValidationException('Unknown paypal response "' . $result . '"');
+                    throw new PaypalVerificationException('Unknown paypal response "' . $result . '"');
             }
         }
 
-        throw new PaypalValidationException('Verification request to PayPal server failed');
+        throw new PaypalVerificationException('Verification request to PayPal server failed');
     }
 }
