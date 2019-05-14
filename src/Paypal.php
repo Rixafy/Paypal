@@ -59,10 +59,9 @@ class Paypal
 
                 case Paypal::RESPONSE_INVALID:
                     throw new PaypalVerificationException('Paypal request is invalid');
-
-                default:
-                    throw new PaypalVerificationException('Unknown paypal response "' . $result . '"');
             }
+
+			throw new PaypalVerificationException('Unknown paypal response "' . $result . '"');
         }
 
         throw new PaypalVerificationException('Verification request to PayPal server failed');
